@@ -1,7 +1,7 @@
 import { Button, Text, Input, Flex } from "@chakra-ui/react";
 import { color } from "framer-motion";
 
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { SiConvertio } from "react-icons/si";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { IoPricetagsOutline } from "react-icons/io5";
@@ -9,6 +9,8 @@ import { TagPicker } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import { addPost } from "@/firebase/posts";
 import router from "next/router";
+import { userAgent } from "next/server";
+import { auth } from "@/firebase/config";
 
 const data = [
   "恋愛",
@@ -26,7 +28,7 @@ export default function Home() {
   const colors = require("tailwindcss/colors");
   const [event, setEvent] = useState("");
   const [converted, setConverted] =
-  useState("ここにAIからの返答が表示されます");
+    useState("ここにAIからの返答が表示されます");
   const [tags, setTags] = useState<string[]>([]);
 
   {
@@ -73,7 +75,7 @@ export default function Home() {
     console.log("converted:", converted);
     console.log("tags:", tags);
     try {
-      await addPost({ event, converted, tags });
+      await addPost({ event, converted, tags, userId: auth.currentUser?.uid });
       console.log("投稿しました");
       router.push("/Posts/MyPosts");
     } catch (e) {
@@ -158,4 +160,3 @@ export default function Home() {
     </div>
   );
 }
-

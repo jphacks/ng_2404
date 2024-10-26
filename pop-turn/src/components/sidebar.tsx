@@ -1,5 +1,5 @@
-import { Button, Container, Flex, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Button, Container, Flex, Text } from "@chakra-ui/react";
+import React from "react";
 import NextLink from "next/link";
 
 type Props = {
@@ -42,12 +42,24 @@ export const Sidebar = (props: Props) => {
       position={"sticky"}
       top={0}
     >
-      <Text fontSize={38} fontWeight={"bold"} m={"1rem 0"}>POP TURN</Text>
+      <Text fontSize={38} fontWeight={"bold"} m={"1rem 0"}>
+        POP TURN
+      </Text>
       {renderButton("/Posts", "Posts", currentPage === "Posts")}
       {renderButton("/Posts/MyPosts", "MyPosts", currentPage === "MyPosts")}
-      {renderButton("/Posts/Favorites", "Favorites", currentPage === "Favorites")}
-      
-      <Container w={"13vw"} bgColor={"colors.orange.100"} flexGrow={1} p={0} display={"flex"}>
+      {renderButton(
+        "/Posts/Favorites",
+        "Favorites",
+        currentPage === "Favorites"
+      )}
+
+      <Container
+        w={"13vw"}
+        bgColor={"colors.orange.100"}
+        flexGrow={1}
+        p={0}
+        display={"flex"}
+      >
         {/* 
         <Flex flexDirection={"column"} w={"15vw"} gap={"0"} alignItems={"left"}>
           <Text fontSize={15}>タグで絞り込み</Text>
@@ -56,16 +68,45 @@ export const Sidebar = (props: Props) => {
         </Flex>
         */}
       </Container>
-      
-      <Button w={"11vw"} bgColor={"orange.400"} borderRadius={"0.2rem"} cursor={"pointer"} p={"0.5rem 0"} colorScheme='orange' as={NextLink}
-        href="/Input">
-        <Text textAlign={"center"} fontWeight={"bold"} fontSize={30} color={"white"}>投稿する</Text>
+
+      <Button
+        w={"11vw"}
+        bgColor={"orange.400"}
+        borderRadius={"0.2rem"}
+        cursor={"pointer"}
+        p={"0.5rem 0"}
+        colorScheme="orange"
+        as={NextLink}
+        href="/Input"
+      >
+        <Text
+          textAlign={"center"}
+          fontWeight={"bold"}
+          fontSize={30}
+          color={"white"}
+        >
+          投稿する
+        </Text>
       </Button>
-      <Button w={"11vw"} cursor={"pointer"} mb={"0.5rem"} pt={"1rem"} bgColor={"transparent"} >
-        <Text textAlign={"center"} mb={"1rem"} fontWeight={"bold"} fontSize={30} color={"black"}>ログアウト</Text>
+      <Button
+        w={"11vw"}
+        cursor={"pointer"}
+        mb={"0.5rem"}
+        pt={"1rem"}
+        bgColor={"transparent"}
+      >
+        <Text
+          textAlign={"center"}
+          mb={"1rem"}
+          fontWeight={"bold"}
+          fontSize={30}
+          color={"black"}
+        >
+          ログアウト
+        </Text>
       </Button>
     </Flex>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

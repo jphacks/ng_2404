@@ -1,54 +1,98 @@
-import React from 'react'
-import CardComponent from './card';
-import { Flex,Box } from '@chakra-ui/react';
+import React, { useEffect, useState } from "react";
+import CardComponent from "./card";
+import { Flex, Box } from "@chakra-ui/react";
+import { getAllPost, getPostsById, Post } from "@/firebase/posts";
+import { auth } from "@/firebase/config";
+import { User } from "firebase/auth";
 
 type PostPageTemplateProps = {
   type: "Posts" | "MyPosts" | "Favorites";
 };
-const now = new Date();
 
 export const PostPageTemplate = (props: PostPageTemplateProps) => {
-  const data = [
-    ["イベント１", "変換された文章１", ["1", "2", "3"], now, true, 100, null],
-    ["イベント２----------------------------", "変換された文章２", ["4", "5", "6"], now, false, 200, null],
-    ["イベント３--------------------------------------------------------------------------------------------------------", "変換された文章３", ["7", "8", "9"], now, true, 300, null],
-    ["イベント４", "変換された文章４", ["10", "11", "12"], now, false, 400, null],
-    ["イベント５", "変換された文章５", ["13", "14", "15"], now, false, 400, null],
-    ["イベント６", "変換された文章６", ["16", "17", "18"], now, false, 400, null],
-  ];
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
+
+  // ユーザーの認証状態を監視
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        let fetchedPosts: Post[] = [];
+
+        switch (props.type) {
+          case "Posts":
+            fetchedPosts = await getAllPost();
+            console.log(fetchedPosts);
+            break;
+          case "MyPosts":
+            if (user?.uid) {
+              // getPostsByUserIdという関数を作成する必要があります
+              fetchedPosts = await getPostsById(user.uid);
+            }
+            break;
+          case "Favorites":
+            if (user?.uid) {
+              // getFavoritePostsという関数を作成する必要があります
+              fetchedPosts = await getFavoritePosts(user.uid);
+            }
+            break;
+        }
+
+        setPosts(fetchedPosts);
+      } catch (error) {
+        console.error("Failed to fetch posts:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (props.type === "Posts" || user) {
+      fetchPosts();
+    }
+  }, [props.type, user]); // type または user が変更されたときに再実行
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (props.type !== "Posts" && !user) {
+    return <div>Please log in to view this content</div>;
+  }
 
   return (
-    <Flex flexWrap="wrap" justifyContent="space-between" alignItems="flex-start">
-      <Box width="48%">
-        {data.filter((_, index) => index % 2 === 0).map((d, index) => (
-          <Box key={index} mb="4">
-            <CardComponent
-              event={d[0]}
-              converted={d[1]}
-              tags={d[2]}
-              date={d[3]}
-              isFavorited={d[4]}
-              FavoritedNumber={d[5]}
-              setisFavorited={d[6]}
-            />
-          </Box>
-        ))}
-      </Box>
-      <Box width="48%">
-        {data.filter((_, index) => index % 2 !== 0).map((d, index) => (
-          <Box key={index} mb="4">
-            <CardComponent
-              event={d[0]}
-              converted={d[1]}
-              tags={d[2]}
-              date={d[3]}
-              isFavorited={d[4]}
-              FavoritedNumber={d[5]}
-              setisFavorited={d[6]}
-            />
-          </Box>
-        ))}
-      </Box>
+    <Flex
+      flexWrap="wrap"
+      justifyContent="space-between"
+      alignItems="flex-start"
+    >
+      {posts.map((post) => (
+        <Box key={post.id} width="48%" mb="4">
+          <CardComponent
+            event={post.event}
+            converted={post.converted}
+            tags={post.tags}
+            date={post.date}
+            isFavorited={false}
+            FavoritedNumber={0}
+          />
+        </Box>
+      ))}
     </Flex>
-  )
-}
+  );
+};
+
+// 必要な追加関数
+
+const getFavoritePosts = async (userId: string): Promise<Post[]> => {
+  // Firestoreからユーザーのお気に入り投稿を取得する実装
+  return [];
+};

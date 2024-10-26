@@ -23,7 +23,7 @@ export const AuthPageTemplate = (props: AuthPageTemplateProps) => {
       console.log(`${props.type === "login" ? "ログイン" : "登録"}成功`);
       props.type === "register"
         ? router.push("/Auth/Login")
-        : router.push("/Posts/Posts");
+        : router.push("/Posts");
     } catch (error) {
       // console.error("ログイン失敗:", error);
       if ((error as { code: string }).code === "auth/email-already-in-use") {
