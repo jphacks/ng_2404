@@ -15,8 +15,25 @@ export default function Home() {
   const colors = require("tailwindcss/colors");
 
   const [event, setEvent] = useState("");
-  const [converted, setConverted] = useState("");
+  const [converted, setConverted] = useState("ここにAIからの返答が表示されます");
   const [tags, setTags] = useState<string[]>([]);
+
+    {/* 
+      const [loading, setLoading] = useState<boolean>(true)
+      useEffect(() => {
+        const getData = async () => {
+          setLoading(true)
+          const result = await ChatGPTからデータを取得する関数
+          setConverted(result)
+          setLoading(false)
+        }
+        getData()
+      })
+
+      if (loading) {
+        return <div>Loading...</div>
+      }
+    */}
 
   const sendToConvert = (e: React.FormEvent<HTMLFormElement>) => {
     {/* 入力した出来事eventをChatGPTに渡す  */}
@@ -60,13 +77,13 @@ export default function Home() {
         </form>
         <form onSubmit={sendToPost} className="w-full flex flex-col justify-between h-full">
           <div className="w-full h-auto min-h-40 bg-white rounded-xl mt-2 px-3 pt-3 flex-grow">
-            ここにAIからの返答が表示されます
+            {converted}
           </div>
           <Flex w={"full"} alignItems={"center"} mt={4}>
             <IoPricetagsOutline />
             <Text mr={3}>タグ</Text>
             <TagPicker
-              disabled={converted === ""}
+              disabled={converted === "ここにAIからの返答が表示されます"}
               data={data}
               value={tags}
               onChange={setTags}
@@ -85,7 +102,7 @@ export default function Home() {
               キャンセル
             </Button>
             <Button
-              disabled={converted === ""}
+              disabled={converted === "ここにAIからの返答が表示されます"}
               background={colors.orange[300]}
               colorScheme="orange"
               type="submit"
