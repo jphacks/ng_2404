@@ -1,6 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getDatabase } from "firebase/database";
+import { initializeApp ,getApp,getApps} from "firebase/app";
+// import { getDatabase } from "firebase/database";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -14,5 +13,7 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
+// export const db = getDatabase(app);
 export const firestore = getFirestore(app); // Firestoreの初期化
+export const initializeFirebaseApp = () =>
+    !getApps().length ? initializeApp(firebaseConfig) : getApp();
