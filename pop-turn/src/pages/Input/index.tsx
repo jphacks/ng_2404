@@ -1,24 +1,36 @@
 import { Button, Text, Input, Flex } from "@chakra-ui/react";
 import { color } from "framer-motion";
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { SiConvertio } from "react-icons/si";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { IoPricetagsOutline } from "react-icons/io5";
-import { TagPicker } from 'rsuite';
-import 'rsuite/dist/rsuite.min.css';
+import { TagPicker } from "rsuite";
+import "rsuite/dist/rsuite.min.css";
+import { addPost } from "@/firebase/posts";
+import router from "next/router";
 
-const data = ['恋愛', '学業', '友人', '職場', '不安', '日常', '将来', '健康','家族'].map(
-  item => ({ label: item, value: item })
-);
+const data = [
+  "恋愛",
+  "学業",
+  "友人",
+  "職場",
+  "不安",
+  "日常",
+  "将来",
+  "健康",
+  "家族",
+].map((item) => ({ label: item, value: item }));
 
 export default function Home() {
   const colors = require("tailwindcss/colors");
 
   const [event, setEvent] = useState("");
-  const [converted, setConverted] = useState("ここにAIからの返答が表示されます");
+  const [converted, setConverted] =
+    useState("ここにAIからの返答が表示されます");
   const [tags, setTags] = useState<string[]>([]);
 
-    {/* 
+  {
+    /* 
       const [loading, setLoading] = useState<boolean>(true)
       useEffect(() => {
         const getData = async () => {
@@ -33,20 +45,40 @@ export default function Home() {
       if (loading) {
         return <div>Loading...</div>
       }
-    */}
+    */
+  }
 
-  const sendToConvert = (e: React.FormEvent<HTMLFormElement>) => {
-    {/* 入力した出来事eventをChatGPTに渡す  */}
+  const sendToConvert = async (e: React.FormEvent<HTMLFormElement>) => {
+    {
+      /* 入力した出来事eventをChatGPTに渡す  */
+    }
     e.preventDefault();
     console.log("event:", event);
+
+    try {
+      // const result = await ChatGPTからデータを取得する関数(event)
+      //仮の返答
+      setConverted(`「${event}」なんて気にするな！`);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
-  const sendToPost = (e: React.FormEvent<HTMLFormElement>) => {
-    {/* 元の出来事と変換された出来事と(付与されたタグ)をfirebaseに渡す */}
+  const sendToPost = async (e: React.FormEvent<HTMLFormElement>) => {
+    {
+      /* 元の出来事と変換された出来事と(付与されたタグ)をfirebaseに渡す */
+    }
     e.preventDefault();
     console.log("event:", event);
     console.log("converted:", converted);
     console.log("tags:", tags);
+    try {
+      await addPost({ event, converted, tags });
+      console.log("投稿しました");
+      router.push("/Posts/MyPosts");
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -62,7 +94,12 @@ export default function Home() {
             placeholder="ポップに変換してほしい出来事を書いてみよう"
             w={"100%"}
           />
-         <Flex justifyContent={"space-between"} w={"full"} alignItems={"center"} pr={"10"}>
+          <Flex
+            justifyContent={"space-between"}
+            w={"full"}
+            alignItems={"center"}
+            pr={"10"}
+          >
             <p className="font-semibold text-[1.2rem]">AIが言い換えた文章</p>
             <Button
               background={colors.orange[300]}
@@ -75,7 +112,10 @@ export default function Home() {
             </Button>
           </Flex>
         </form>
-        <form onSubmit={sendToPost} className="w-full flex flex-col justify-between h-full">
+        <form
+          onSubmit={sendToPost}
+          className="w-full flex flex-col justify-between h-full"
+        >
           <div className="w-full h-auto min-h-40 bg-white rounded-xl mt-2 px-3 pt-3 flex-grow">
             {converted}
           </div>
@@ -117,4 +157,4 @@ export default function Home() {
       </div>
     </div>
   );
-};
+}
