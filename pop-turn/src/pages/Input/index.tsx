@@ -1,7 +1,7 @@
 import { Button, Text, Input, Flex } from "@chakra-ui/react";
 import { color } from "framer-motion";
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { SiConvertio } from "react-icons/si";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { IoPricetagsOutline } from "react-icons/io5";
@@ -24,9 +24,13 @@ const data = [
 
 export default function Home() {
   const colors = require("tailwindcss/colors");
-
   const [event, setEvent] = useState("");
+  const [converted, setConverted] =
+  useState("ここにAIからの返答が表示されます");
+  const [tags, setTags] = useState<string[]>([]);
 
+  {
+    /* 
       const [loading, setLoading] = useState<boolean>(true)
       useEffect(() => {
         const getData = async () => {
