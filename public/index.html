@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase Authentication サインアップ・サインイン</title>
+    <!-- 空の favicon を設定 -->
+    <link rel="icon" href="data:;base64,=" />
+  </head>
+  <body>
+    <h2>サインアップ</h2>
+    <input type="email" id="signup-email" placeholder="メールアドレス" />
+    <input type="password" id="signup-password" placeholder="パスワード" />
+    <button onclick="signUp()">サインアップ</button>
+    <p id="signup-result"></p>
+
+    <h2>サインイン</h2>
+    <input type="email" id="signin-email" placeholder="メールアドレス" />
+    <input type="password" id="signin-password" placeholder="パスワード" />
+    <button onclick="signIn()">サインイン</button>
+    <p id="signin-result"></p>
+
+    <!-- Firebase SDK と JavaScriptファイルの読み込み -->
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

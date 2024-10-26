@@ -1,2 +1,4 @@
 .env
 .venv
+firebase_auth
+node_modules

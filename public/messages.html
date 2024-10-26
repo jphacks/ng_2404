@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messages</title>
+    <link rel="icon" href="data:;base64,=" />
+  </head>
+  <body>
+    <h2>メッセージを入力</h2>
+    <input type="text" id="message-input" placeholder="メッセージを入力" />
+    <button onclick="sendMessage()">送信</button>
+    <p id="send-result"></p>
+
+    <h2>メッセージ一覧</h2>
+    <div id="messages-list"></div>
+
+    <!-- Firebase SDK と JavaScriptファイルの読み込み -->
+    <script type="module" src="messages.js"></script>
+  </body>
+</html>

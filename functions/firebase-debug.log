@@ -1,0 +1,53 @@
+[debug] [2024-10-26T08:00:41.011Z] ----------------------------------------------------------------------
+[debug] [2024-10-26T08:00:41.013Z] Command:       /Users/kitaniyasushinozomi/.nodebrew/node/v19.8.1/bin/node /Users/kitaniyasushinozomi/.nodebrew/current/bin/firebase emulators:start --only hosting
+[debug] [2024-10-26T08:00:41.013Z] CLI Version:   13.23.0
+[debug] [2024-10-26T08:00:41.013Z] Platform:      darwin
+[debug] [2024-10-26T08:00:41.013Z] Node Version:  v19.8.1
+[debug] [2024-10-26T08:00:41.013Z] Time:          Sat Oct 26 2024 17:00:41 GMT+0900 (日本標準時)
+[debug] [2024-10-26T08:00:41.013Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-10-26T08:00:41.066Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-10-26T08:00:41.066Z] > authorizing via signed-in user (kidanikouki@gmail.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2024-10-26T08:00:41.280Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-10-26T08:00:41.280Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-10-26T08:00:41.280Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5005}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-10-26T08:00:41.282Z] [hub] writing locator at /var/folders/m0/9fnkln5d1m90n_vgzz7z0llw0000gn/T/hub-jphacks2024.json
+[debug] [2024-10-26T08:00:41.287Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:41.287Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:41.288Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/jphacks2024/sites 
+[debug] [2024-10-26T08:00:42.237Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/jphacks2024/sites 200
+[debug] [2024-10-26T08:00:42.237Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/jphacks2024/sites {"sites":[{"name":"projects/jphacks2024/sites/jphacks2024","defaultUrl":"https://jphacks2024.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-10-26T08:00:42.237Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:42.237Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:42.237Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024/webApps/-/config [none]
+[debug] [2024-10-26T08:00:43.232Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024/webApps/-/config 200
+[debug] [2024-10-26T08:00:43.232Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024/webApps/-/config {"projectId":"jphacks2024","appId":"1:859880374978:web:ea9b0bf0dda7ad96bdf15b","storageBucket":"jphacks2024.appspot.com","apiKey":"AIzaSyCpfiocB6YyMjIDLhb_AWtaIi9A5QCvlCM","authDomain":"jphacks2024.firebaseapp.com","messagingSenderId":"859880374978","measurementId":"G-PZB73GL3RE"}
+[debug] [2024-10-26T08:00:43.242Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:43.242Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:43.242Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024 [none]
+[debug] [2024-10-26T08:00:43.561Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024 200
+[debug] [2024-10-26T08:00:43.561Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024 {"projectId":"jphacks2024","projectNumber":"859880374978","displayName":"jphacks2024","name":"projects/jphacks2024","resources":{"hostingSite":"jphacks2024"},"state":"ACTIVE","etag":"1_c2caaa1b-a522-495c-92f9-5b22b65fbd4a"}
+[info] i  hosting[jphacks2024]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting[jphacks2024]: Local server: http://127.0.0.1:5005 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5005\u001b[22m\u001b[24m"}}
+[warn] ⚠  emulators: The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[debug] [2024-10-26T08:00:43.640Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED ::1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Hosting  │ 127.0.0.1:5005 │
+└──────────┴────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[info] i  hosting: 127.0.0.1 - - [26/Oct/2024:08:00:56 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [26/Oct/2024:08:00:56 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [26/Oct/2024:08:01:23 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [26/Oct/2024:08:01:23 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [26/Oct/2024:08:01:35 +0000] "GET /messages.html HTTP/1.1" 200 656 "http://localhost:5005/" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [26/Oct/2024:08:01:35 +0000] \"GET /messages.html HTTP/1.1\" 200 656 \"http://localhost:5005/\" \"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [26/Oct/2024:08:01:35 +0000] "GET /messages.js HTTP/1.1" 200 - "http://localhost:5005/messages.html" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [26/Oct/2024:08:01:35 +0000] \"GET /messages.js HTTP/1.1\" 200 - \"http://localhost:5005/messages.html\" \"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36\""}}
