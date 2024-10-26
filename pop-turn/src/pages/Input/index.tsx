@@ -6,6 +6,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 import { IoPricetagsOutline } from "react-icons/io5";
 import { TagPicker } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
+import NextLink from "next/link";
 
 const data = ['恋愛', '学業', '友人', '職場', '不安', '日常', '将来', '健康','家族'].map(
   item => ({ label: item, value: item })
@@ -95,9 +96,8 @@ export default function Home() {
             <Button
               background={colors.gray[300]}
               colorScheme="gray"
-              onClick={() => {
-                // キャンセルボタンの処理
-              }}
+              as={NextLink}
+              href="/Posts"
             >
               キャンセル
             </Button>

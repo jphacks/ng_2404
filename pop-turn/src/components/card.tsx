@@ -15,14 +15,14 @@ type props={
   date: Date;   //出来事が起こった日付
   isFavorited: boolean;   //いいねに登録されているかどうか
   FavoritedNumber: number;   //いいねに登録されている数 他人の投稿をみるときは使わない
-  setisFavorited: React.Dispatch<React.SetStateAction<boolean>>;   //いいねを押したときの挙動
+  setisFavorited: React.Dispatch<React.SetStateAction<boolean>> | null;   //いいねを押したときの挙動
 }
 
 export default function CardComponent(props: props) {
   const { event, converted, tags, date, isFavorited,FavoritedNumber,setisFavorited } = props;
   return (
-      <Flex flexDirection={"column"} alignItems={"center"}>
-        <Card mt={"10rem"} bgColor={"orange.50"} border={"1px solid black"} w={"30rem"}>
+      <Flex flexDirection={"column"} alignItems={"center"} my={5} >
+        <Card bgColor={"orange.50"} border={"1px solid black"} w={"30rem"}>
           <CardHeader>
             <Container bgColor={"white"} borderRadius={"10px"} shadow={"xs"} pt={"0.3rem"}>
               <Flex justifyContent={"left"} mt={"1"}>
