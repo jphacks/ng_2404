@@ -1,4 +1,5 @@
 import { Button, Input } from "@chakra-ui/react";
+import { color } from "framer-motion";
 import { useState } from "react";
 
 type AuthPageTemplateProps = {
@@ -6,6 +7,8 @@ type AuthPageTemplateProps = {
 };
 
 export const AuthPageTemplate = (props: AuthPageTemplateProps) => {
+  const colors = require("tailwindcss/colors");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,7 +37,11 @@ export const AuthPageTemplate = (props: AuthPageTemplateProps) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="mt-6 flex items-center justify-end">
-          <Button colorScheme="orange" type="submit">
+          <Button
+            background={colors.orange[300]}
+            colorScheme="orange"
+            type="submit"
+          >
             {props.type === "login" ? "ログイン" : "確認メールを送信"}
           </Button>
         </div>
