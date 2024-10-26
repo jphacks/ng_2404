@@ -1,14 +1,23 @@
 {
   "functions": {
-    "source": "functions"
+    "source": "functions",
+    "runtime": "nodejs18",
+    "codebase": "default",
+    "deploy": {
+      "api": {
+        "gen": 2,
+        "region": "us-central1"
+      }
+    }
   },
   "hosting": {
     "public": "public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.z*", "**/node_modules/**"]
   },
   "emulators": {
     "hosting": {
-      "port": 5000
+      "host": "localhost",
+      "port": 5005
     },
     "functions": {
       "port": 5001
