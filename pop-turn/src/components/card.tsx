@@ -38,7 +38,6 @@ export default function CardComponent(props: props) {
     FavoritedNumber,
     // setisFavorited,
   } = props;
-  console.log("date:", date);
   return (
     <Flex flexDirection={"column"} alignItems={"center"} my={5}>
       <Card bgColor={"orange.50"} border={"1px solid black"} w={"30rem"}>
