@@ -1,125 +1,53 @@
-[debug] [2024-10-26T07:36:28.601Z] ----------------------------------------------------------------------
-[debug] [2024-10-26T07:36:28.603Z] Command:       /Users/kitaniyasushinozomi/.nodebrew/node/v19.8.1/bin/node /Users/kitaniyasushinozomi/.nodebrew/current/bin/firebase emulators:start --only functions
-[debug] [2024-10-26T07:36:28.603Z] CLI Version:   13.23.0
-[debug] [2024-10-26T07:36:28.603Z] Platform:      darwin
-[debug] [2024-10-26T07:36:28.603Z] Node Version:  v19.8.1
-[debug] [2024-10-26T07:36:28.603Z] Time:          Sat Oct 26 2024 16:36:28 GMT+0900 (日本標準時)
-[debug] [2024-10-26T07:36:28.603Z] ----------------------------------------------------------------------
+[debug] [2024-10-26T08:00:41.011Z] ----------------------------------------------------------------------
+[debug] [2024-10-26T08:00:41.013Z] Command:       /Users/kitaniyasushinozomi/.nodebrew/node/v19.8.1/bin/node /Users/kitaniyasushinozomi/.nodebrew/current/bin/firebase emulators:start --only hosting
+[debug] [2024-10-26T08:00:41.013Z] CLI Version:   13.23.0
+[debug] [2024-10-26T08:00:41.013Z] Platform:      darwin
+[debug] [2024-10-26T08:00:41.013Z] Node Version:  v19.8.1
+[debug] [2024-10-26T08:00:41.013Z] Time:          Sat Oct 26 2024 17:00:41 GMT+0900 (日本標準時)
+[debug] [2024-10-26T08:00:41.013Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2024-10-26T07:36:28.657Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2024-10-26T07:36:28.658Z] > authorizing via signed-in user (kidanikouki@gmail.com)
-[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
-[debug] [2024-10-26T07:36:28.920Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-10-26T07:36:28.921Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2024-10-26T07:36:28.924Z] [hub] writing locator at /var/folders/m0/9fnkln5d1m90n_vgzz7z0llw0000gn/T/hub-jphacks2024.json
-[debug] [2024-10-26T07:36:29.153Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-10-26T07:36:29.154Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-10-26T07:36:29.154Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-10-26T07:36:29.154Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
-[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
-[debug] [2024-10-26T07:36:29.155Z] defaultcredentials: writing to file /Users/kitaniyasushinozomi/.config/firebase/kidanikouki_gmail_com_application_default_credentials.json
-[debug] [2024-10-26T07:36:29.159Z] Setting GAC to /Users/kitaniyasushinozomi/.config/firebase/kidanikouki_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/kitaniyasushinozomi/.config/firebase/kidanikouki_gmail_com_application_default_credentials.json"}}
-[debug] [2024-10-26T07:36:29.159Z] Checked if tokens are valid: true, expires at: 1729931620913
-[debug] [2024-10-26T07:36:29.159Z] Checked if tokens are valid: true, expires at: 1729931620913
-[debug] [2024-10-26T07:36:29.160Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024/adminSdkConfig [none]
-[debug] [2024-10-26T07:36:29.733Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024/adminSdkConfig 200
-[debug] [2024-10-26T07:36:29.733Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024/adminSdkConfig {"projectId":"jphacks2024","storageBucket":"jphacks2024.appspot.com"}
-[debug] [2024-10-26T07:36:29.760Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2024-10-26T07:36:29.760Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2024-10-26T07:36:29.760Z] Starting Emulator UI with command {"binary":"node","args":["/Users/kitaniyasushinozomi/.cache/firebase/emulators/ui-v1.14.0/server/server.mjs"],"optionalArgs":[],"joinArgs":false,"shell":false,"port":4000} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/kitaniyasushinozomi/.cache/firebase/emulators/ui-v1.14.0/server/server.mjs\"],\"optionalArgs\":[],\"joinArgs\":false,\"shell\":false,\"port\":4000}"}}
-[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
-[debug] [2024-10-26T07:36:29.853Z] Web / API server started at 127.0.0.1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
-[debug] [2024-10-26T07:36:29.853Z] Web / API server started at ::1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
-[info] i  functions: Watching "/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions\" for Cloud Functions..."}}
-[debug] [2024-10-26T07:36:29.974Z] Validating nodejs source
-[debug] [2024-10-26T07:36:30.688Z] > [functions] package.json contents: {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
-  "scripts": {
-    "lint": "eslint .",
-    "serve": "firebase emulators:start --only functions",
-    "shell": "firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
-  },
-  "engines": {
-    "node": "18"
-  },
-  "main": "index.js",
-  "dependencies": {
-    "firebase-admin": "^12.6.0",
-    "firebase-functions": "^6.0.1"
-  },
-  "devDependencies": {
-    "eslint": "^8.15.0",
-    "eslint-config-google": "^0.14.0",
-    "firebase-functions-test": "^3.1.0"
-  },
-  "private": true
-}
-[debug] [2024-10-26T07:36:30.688Z] Building nodejs source
-[debug] [2024-10-26T07:36:30.689Z] Failed to find version of module node: reached end of search path /Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules
-[warn] ⚠  functions: Your requested "node" version "18" doesn't match your global version "19". Using node@19 from host. 
-[debug] [2024-10-26T07:36:30.690Z] Could not find functions.yaml. Must use http discovery
-[debug] [2024-10-26T07:36:30.696Z] Found firebase-functions binary at '/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/.bin/firebase-functions'
-[info] Serving at port 8091
-
-[debug] [2024-10-26T07:36:32.004Z] Got response from /__/functions.yaml {"endpoints":{"helloWorld":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"helloWorld"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
-[info] ✔  functions: Loaded functions definitions from source: helloWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: helloWorld."}}
-[info] ✔  functions[us-central1-helloWorld]: http function initialized (http://127.0.0.1:5001/jphacks2024/us-central1/helloWorld). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/jphacks2024/us-central1/helloWorld)."}}
-[debug] [2024-10-26T07:36:37.031Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED ::1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[debug] [2024-10-26T08:00:41.066Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-10-26T08:00:41.066Z] > authorizing via signed-in user (kidanikouki@gmail.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2024-10-26T08:00:41.280Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-10-26T08:00:41.280Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-10-26T08:00:41.280Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5005}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-10-26T08:00:41.282Z] [hub] writing locator at /var/folders/m0/9fnkln5d1m90n_vgzz7z0llw0000gn/T/hub-jphacks2024.json
+[debug] [2024-10-26T08:00:41.287Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:41.287Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:41.288Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/jphacks2024/sites 
+[debug] [2024-10-26T08:00:42.237Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/jphacks2024/sites 200
+[debug] [2024-10-26T08:00:42.237Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/jphacks2024/sites {"sites":[{"name":"projects/jphacks2024/sites/jphacks2024","defaultUrl":"https://jphacks2024.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-10-26T08:00:42.237Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:42.237Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:42.237Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024/webApps/-/config [none]
+[debug] [2024-10-26T08:00:43.232Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024/webApps/-/config 200
+[debug] [2024-10-26T08:00:43.232Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024/webApps/-/config {"projectId":"jphacks2024","appId":"1:859880374978:web:ea9b0bf0dda7ad96bdf15b","storageBucket":"jphacks2024.appspot.com","apiKey":"AIzaSyCpfiocB6YyMjIDLhb_AWtaIi9A5QCvlCM","authDomain":"jphacks2024.firebaseapp.com","messagingSenderId":"859880374978","measurementId":"G-PZB73GL3RE"}
+[debug] [2024-10-26T08:00:43.242Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:43.242Z] Checked if tokens are valid: true, expires at: 1729931620913
+[debug] [2024-10-26T08:00:43.242Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024 [none]
+[debug] [2024-10-26T08:00:43.561Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024 200
+[debug] [2024-10-26T08:00:43.561Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/jphacks2024 {"projectId":"jphacks2024","projectNumber":"859880374978","displayName":"jphacks2024","name":"projects/jphacks2024","resources":{"hostingSite":"jphacks2024"},"state":"ACTIVE","etag":"1_c2caaa1b-a522-495c-92f9-5b22b65fbd4a"}
+[info] i  hosting[jphacks2024]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting[jphacks2024]: Local server: http://127.0.0.1:5005 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5005\u001b[22m\u001b[24m"}}
+[warn] ⚠  emulators: The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[debug] [2024-10-26T08:00:43.640Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED ::1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
 [info] 
 ┌─────────────────────────────────────────────────────────────┐
 │ ✔  All emulators ready! It is now safe to connect your app. │
-│ i  View Emulator UI at http://127.0.0.1:4000/               │
 └─────────────────────────────────────────────────────────────┘
 
-┌───────────┬────────────────┬─────────────────────────────────┐
-│ Emulator  │ Host:Port      │ View in Emulator UI             │
-├───────────┼────────────────┼─────────────────────────────────┤
-│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
-└───────────┴────────────────┴─────────────────────────────────┘
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Hosting  │ 127.0.0.1:5005 │
+└──────────┴────────────────┘
   Emulator Hub running at 127.0.0.1:4400
   Other reserved ports: 4500
 
 Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
  
-[debug] [2024-10-26T07:37:02.158Z] [work-queue] {"queuedWork":["/jphacks2024/us-central1/api-2024-10-26T07:37:02.158Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
-[debug] [2024-10-26T07:37:02.158Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/jphacks2024/us-central1/api-2024-10-26T07:37:02.158Z"],"workRunningCount":1}
-[debug] [2024-10-26T07:37:02.160Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
-[debug] [2024-10-26T07:37:02.723Z] [work-queue] {"queuedWork":["/jphacks2024/us-central1/api-2024-10-26T07:37:02.723Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
-[debug] [2024-10-26T07:37:02.723Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/jphacks2024/us-central1/api-2024-10-26T07:37:02.723Z"],"workRunningCount":1}
-[debug] [2024-10-26T07:37:02.724Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
-[debug] [2024-10-26T07:37:50.871Z] [work-queue] {"queuedWork":["/jphacks2024/us-central1/helloWorld-2024-10-26T07:37:50.871Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
-[debug] [2024-10-26T07:37:50.872Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/jphacks2024/us-central1/helloWorld-2024-10-26T07:37:50.871Z"],"workRunningCount":1}
-[debug] [2024-10-26T07:37:50.873Z] Accepted request GET /jphacks2024/us-central1/helloWorld --> us-central1-helloWorld
-[debug] [2024-10-26T07:37:50.876Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
-[debug] [2024-10-26T07:37:50.877Z] [functions] Got req.url=/jphacks2024/us-central1/helloWorld, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/jphacks2024/us-central1/helloWorld, mapping to path=/"}}
-[debug] [2024-10-26T07:37:50.880Z] [worker-pool] addWorker(us-central1-helloWorld) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-helloWorld)"}}
-[debug] [2024-10-26T07:37:50.881Z] [worker-pool] Adding worker with key us-central1-helloWorld, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-helloWorld, total=1"}}
-[debug] [2024-10-26T07:37:51.316Z] [runtime-status] [76901] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-admin/lib/index.js\"}"}}
-[debug] [2024-10-26T07:37:51.316Z] [runtime-status] [76901] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.1.0","resolution":"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.1.0\",\"resolution\":\"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
-[debug] [2024-10-26T07:37:51.316Z] [runtime-status] [76901] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
-[debug] [2024-10-26T07:37:51.316Z] [runtime-status] [76901] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.1.0","resolution":"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.1.0\",\"resolution\":\"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
-[debug] [2024-10-26T07:37:51.386Z] [runtime-status] [76901] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Checked functions.config() {\"config\":{}}"}}
-[debug] [2024-10-26T07:37:51.387Z] [runtime-status] [76901] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.1.0","resolution":"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.1.0\",\"resolution\":\"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js\"}}"}}
-[debug] [2024-10-26T07:37:51.387Z] [runtime-status] [76901] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.1.0","resolution":"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.1.0\",\"resolution\":\"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
-[debug] [2024-10-26T07:37:51.389Z] [runtime-status] [76901] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-admin/lib/index.js\"}"}}
-[debug] [2024-10-26T07:37:51.391Z] [runtime-status] [76901] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.1.0","resolution":"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.1.0\",\"resolution\":\"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
-[debug] [2024-10-26T07:37:51.391Z] [runtime-status] [76901] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
-[debug] [2024-10-26T07:37:51.395Z] [runtime-status] [76901] Functions runtime initialized. {"cwd":"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions","node_version":"19.8.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Functions runtime initialized. {\"cwd\":\"/Users/kitaniyasushinozomi/practice/jack/ng_2404/functions\",\"node_version\":\"19.8.1\"}"}}
-[debug] [2024-10-26T07:37:51.395Z] [runtime-status] [76901] Listening to port: /var/folders/m0/9fnkln5d1m90n_vgzz7z0llw0000gn/T/fire_emu_72594868cfcef181.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[runtime-status] [76901] Listening to port: /var/folders/m0/9fnkln5d1m90n_vgzz7z0llw0000gn/T/fire_emu_72594868cfcef181.sock"}}
-[debug] [2024-10-26T07:37:51.490Z] [worker-us-central1-helloWorld-c738aa4c-6086-4ff3-97e9-ab16ce259208]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[worker-us-central1-helloWorld-c738aa4c-6086-4ff3-97e9-ab16ce259208]: IDLE"}}
-[debug] [2024-10-26T07:37:51.490Z] [worker-pool] submitRequest(triggerId=us-central1-helloWorld) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-helloWorld)"}}
-[info] i  functions: Beginning execution of "us-central1-helloWorld" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"Beginning execution of \"us-central1-helloWorld\""}}
-[debug] [2024-10-26T07:37:51.490Z] [worker-us-central1-helloWorld-c738aa4c-6086-4ff3-97e9-ab16ce259208]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[worker-us-central1-helloWorld-c738aa4c-6086-4ff3-97e9-ab16ce259208]: BUSY"}}
-[info] >  {"structuredData":true,"severity":"INFO","message":"Hello logs!"} {"user":{"structuredData":true,"severity":"INFO","message":"Hello logs!"},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"structuredData\":true,\"severity\":\"INFO\",\"message\":\"Hello logs!\"}"}}
-[debug] [2024-10-26T07:37:51.493Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"Finishing up request with event=pause"}}
-[info] i  functions: Finished "us-central1-helloWorld" in 2.805542ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"Finished \"us-central1-helloWorld\" in 2.805542ms"}}
-[debug] [2024-10-26T07:37:51.493Z] [worker-us-central1-helloWorld-c738aa4c-6086-4ff3-97e9-ab16ce259208]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"[worker-us-central1-helloWorld-c738aa4c-6086-4ff3-97e9-ab16ce259208]: IDLE"}}
-[debug] [2024-10-26T07:37:51.494Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"Finishing up request with event=finish"}}
-[debug] [2024-10-26T07:37:51.494Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-helloWorld"},"extension":{},"message":"Finishing up request with event=close"}}
-[debug] [2024-10-26T07:37:51.494Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[info] i  hosting: 127.0.0.1 - - [26/Oct/2024:08:00:56 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [26/Oct/2024:08:00:56 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [26/Oct/2024:08:01:23 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [26/Oct/2024:08:01:23 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [26/Oct/2024:08:01:35 +0000] "GET /messages.html HTTP/1.1" 200 656 "http://localhost:5005/" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [26/Oct/2024:08:01:35 +0000] \"GET /messages.html HTTP/1.1\" 200 656 \"http://localhost:5005/\" \"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [26/Oct/2024:08:01:35 +0000] "GET /messages.js HTTP/1.1" 200 - "http://localhost:5005/messages.html" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [26/Oct/2024:08:01:35 +0000] \"GET /messages.js HTTP/1.1\" 200 - \"http://localhost:5005/messages.html\" \"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36\""}}
