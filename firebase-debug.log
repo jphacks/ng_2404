@@ -1,0 +1,52 @@
+[debug] [2024-10-26T07:08:06.436Z] ----------------------------------------------------------------------
+[debug] [2024-10-26T07:08:06.438Z] Command:       /Users/kitaniyasushinozomi/.nodebrew/node/v19.8.1/bin/node /Users/kitaniyasushinozomi/.nodebrew/current/bin/firebase deploy --only functions
+[debug] [2024-10-26T07:08:06.438Z] CLI Version:   13.23.0
+[debug] [2024-10-26T07:08:06.438Z] Platform:      darwin
+[debug] [2024-10-26T07:08:06.438Z] Node Version:  v19.8.1
+[debug] [2024-10-26T07:08:06.438Z] Time:          Sat Oct 26 2024 16:08:06 GMT+0900 (日本標準時)
+[debug] [2024-10-26T07:08:06.438Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-10-26T07:08:06.471Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-10-26T07:08:06.471Z] > authorizing via signed-in user (kidanikouki@gmail.com)
+[debug] [2024-10-26T07:08:06.471Z] [iam] checking project default for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-10-26T07:08:06.471Z] Checked if tokens are valid: true, expires at: 1729928890663
+[debug] [2024-10-26T07:08:06.472Z] Checked if tokens are valid: true, expires at: 1729928890663
+[debug] [2024-10-26T07:08:06.472Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/default:testIamPermissions [none]
+[debug] [2024-10-26T07:08:06.472Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/default:testIamPermissions x-goog-quota-user=projects/default
+[debug] [2024-10-26T07:08:06.472Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/default:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-10-26T07:08:07.730Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/default:testIamPermissions 200
+[debug] [2024-10-26T07:08:07.730Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/default:testIamPermissions {}
+[debug] [2024-10-26T07:08:07.730Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project default:
+
+  cloudfunctions.functions.create
+  cloudfunctions.functions.delete
+  cloudfunctions.functions.get
+  cloudfunctions.functions.list
+  cloudfunctions.functions.update
+  cloudfunctions.operations.get
+  firebase.projects.get
+[debug] [2024-10-26T07:08:07.730Z] Checked if tokens are valid: true, expires at: 1729928890663
+[debug] [2024-10-26T07:08:07.730Z] Checked if tokens are valid: true, expires at: 1729928890663
+[debug] [2024-10-26T07:08:07.730Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/default/serviceAccounts/default@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-10-26T07:08:07.730Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/default/serviceAccounts/default@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-10-26T07:08:08.896Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/default/serviceAccounts/default@appspot.gserviceaccount.com:testIamPermissions 404
+[debug] [2024-10-26T07:08:08.896Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/default/serviceAccounts/default@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2024-10-26T07:08:08.897Z] [functions] service account IAM check errored, deploy may fail: Request to https://iam.googleapis.com/v1/projects/default/serviceAccounts/default@appspot.gserviceaccount.com:testIamPermissions had HTTP Error: 404, Unknown service account {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"Request to https://iam.googleapis.com/v1/projects/default/serviceAccounts/default@appspot.gserviceaccount.com:testIamPermissions had HTTP Error: 404, Unknown service account","status":404}
+[info] 
+[info] === Deploying to 'default'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2024-10-26T07:08:09.761Z] Checked if tokens are valid: true, expires at: 1729928890663
+[debug] [2024-10-26T07:08:09.761Z] Checked if tokens are valid: true, expires at: 1729928890663
+[debug] [2024-10-26T07:08:09.762Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/default [none]
+[debug] [2024-10-26T07:08:10.767Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/default 403
+[debug] [2024-10-26T07:08:10.767Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/default {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-10-26T07:08:10.768Z] Request to https://firebase.googleapis.com/v1beta1/projects/default had HTTP Error: 403, The caller does not have permission
+[debug] [2024-10-26T07:08:11.036Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/default had HTTP Error: 403, The caller does not have permission
+    at responseToError (/Users/kitaniyasushinozomi/.nodebrew/node/v19.8.1/lib/node_modules/firebase-tools/lib/responseToError.js:52:12)
+    at RetryOperation._fn (/Users/kitaniyasushinozomi/.nodebrew/node/v19.8.1/lib/node_modules/firebase-tools/lib/apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project default. Please make sure the project exists and your account has permission to access it.
