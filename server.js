@@ -6,7 +6,7 @@ const cors = require("cors");
 
 app.use(cors());
 
-// Firebase Ý’èî•ñ‚ðŽæ“¾‚·‚éƒGƒ“ƒhƒ|ƒCƒ“ƒg
+// Firebase ï¿½Ý’ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½hï¿½|ï¿½Cï¿½ï¿½ï¿½g
 app.get("/firebase-config", (req, res) => {
   res.json({
     apiKey: process.env.FIREBASE_API_KEY,

@@ -22,6 +22,7 @@ fetch("http://localhost:3000/firebase-config")
         .then((userCredential) => {
           document.getElementById("signup-result").textContent =
             "サインアップ成功: " + userCredential.user.email;
+          window.location.href = "messages.html"; // メッセージページにリダイレクト
         })
         .catch((error) => {
           document.getElementById("signup-result").textContent =
@@ -36,10 +37,13 @@ fetch("http://localhost:3000/firebase-config")
 
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+          console.log("サインイン成功: " + userCredential.user.email);
           document.getElementById("signin-result").textContent =
             "サインイン成功: " + userCredential.user.email;
+          window.location.href = "messages.html"; // メッセージページにリダイレクト
         })
         .catch((error) => {
+          console.error("サインインエラー:", error.message);
           document.getElementById("signin-result").textContent =
             "エラー: " + error.message;
         });
