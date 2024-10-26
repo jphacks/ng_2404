@@ -15,7 +15,7 @@ export default function Home() {
   const colors = require("tailwindcss/colors");
 
   const [event, setEvent] = useState("");
-  const [converted, setConverted] = useState("a");
+  const [converted, setConverted] = useState("");
   const [tags, setTags] = useState<string[]>([]);
 
   const sendToConvert = (e: React.FormEvent<HTMLFormElement>) => {
