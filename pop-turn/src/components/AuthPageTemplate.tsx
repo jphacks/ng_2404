@@ -15,26 +15,29 @@ export const AuthPageTemplate = (props: AuthPageTemplateProps) => {
     console.log("password:", password);
   };
   return (
-    <div>
-      <h1 className="text-[10rem]">
+    <div className="h-80 w-1/2 bg-orange-50 rounded-xl px-10 pt-6 ">
+      <h1 className="text-5xl mb-5 ">
         {props.type === "login" ? "ログイン" : "新規登録"}
       </h1>
       <form onSubmit={send}>
         <p>メールアドレス</p>
         <Input
+          variant="flushed"
           value={email}
-          placeholder="メールアドレス"
           onChange={(e) => setEmail(e.target.value)}
+          className="mb-4 bg-white"
         />
         <p>パスワード</p>
         <Input
+          variant="flushed"
           value={password}
-          placeholder="パスワード"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button type="submit">
-          {props.type === "login" ? "ログイン" : "確認メールを送信"}
-        </Button>
+        <div className="mt-6 flex items-center justify-end">
+          <Button colorScheme="orange" type="submit">
+            {props.type === "login" ? "ログイン" : "確認メールを送信"}
+          </Button>
+        </div>
       </form>
     </div>
   );
