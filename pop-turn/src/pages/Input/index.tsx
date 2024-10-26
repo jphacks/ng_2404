@@ -1,5 +1,6 @@
 import { Button, Text, Input, Flex } from "@chakra-ui/react";
 import { color } from "framer-motion";
+
 import React, { useState } from "react";
 import { SiConvertio } from "react-icons/si";
 import { FaArrowAltCircleRight } from "react-icons/fa";
@@ -25,12 +26,7 @@ export default function Home() {
   const colors = require("tailwindcss/colors");
 
   const [event, setEvent] = useState("");
-  const [converted, setConverted] =
-    useState("ここにAIからの返答が表示されます");
-  const [tags, setTags] = useState<string[]>([]);
 
-  {
-    /* 
       const [loading, setLoading] = useState<boolean>(true)
       useEffect(() => {
         const getData = async () => {
@@ -158,3 +154,4 @@ export default function Home() {
     </div>
   );
 }
+
