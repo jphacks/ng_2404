@@ -1,6 +1,8 @@
 import { Button, Container, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import NextLink from "next/link";
+import { signOut } from "firebase/auth";
+import { signOutUser } from "@/firebase/auth";
 
 type Props = {
   currentPage: "Posts" | "MyPosts" | "Favorites";
@@ -101,6 +103,7 @@ export const Sidebar = (props: Props) => {
           fontWeight={"bold"}
           fontSize={30}
           color={"black"}
+          onClick={signOutUser}
         >
           ログアウト
         </Text>
