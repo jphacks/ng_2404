@@ -4,6 +4,8 @@ import NextLink from "next/link";
 import { FaPlus } from "react-icons/fa6";
 import { LuMinus } from "react-icons/lu";
 import { useRouter } from "next/router";
+import { signOut } from "firebase/auth";
+import { signOutUser } from "@/firebase/auth";
 
 type Props = {
   currentPage: "Posts" | "MyPosts" | "Favorites";
@@ -159,6 +161,7 @@ export const Sidebar = (props: Props) => {
           fontWeight={"bold"}
           fontSize={30}
           color={"black"}
+          onClick={signOutUser}
         >
           ログアウト
         </Text>
