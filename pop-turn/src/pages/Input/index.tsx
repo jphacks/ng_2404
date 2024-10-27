@@ -86,7 +86,7 @@ function Home() {
 
   return (
     <div className="h-screen bg-orange-100 flex items-center justify-center">
-      <div className="h-3/4 w-3/4 bg-orange-50 rounded-xl px-16 py-8 flex flex-col">
+      <div className="h-auto w-3/4 bg-orange-50 rounded-xl px-16 py-8 flex flex-col">
         <form onSubmit={sendToConvert} className="w-full">
           <p className="font-semibold text-[1.2rem]">ネガティブな出来事</p>
           <Input
