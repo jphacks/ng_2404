@@ -4,7 +4,8 @@ export const convert = async (event: string) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ event }),
+    body: JSON.stringify({ message: "サンプルメッセージ" }),
+    mode: "cors",
   });
 
   if (!response.ok) {

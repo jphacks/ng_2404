@@ -74,15 +74,18 @@
                 alert("エラー: " + error.message);
               });
 
-            // Flaskサーバーにメッセージを送信
-            fetch("http://127.0.0.1:8000/process-message", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              mode: "cors", // 追加
-              body: JSON.stringify({ message: messageInput.value }),
-            })
+            // Firebase Functionsにメッセージを送信
+            fetch(
+              "https://<YOUR_REGION>-<YOUR_PROJECT_ID>.cloudfunctions.net/api/process-message",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                mode: "cors",
+                body: JSON.stringify({ message: messageInput.value }),
+              }
+            )
               .then((response) => response.json())
               .then((data) => {
                 const resultElement = document.getElementById("send-result");
@@ -90,7 +93,7 @@
                   "サーバーからの応答: " + data.response;
               })
               .catch((error) => {
-                console.error("Flaskサーバーエラー:", error);
+                console.error("Firebase Functionsエラー:", error);
               });
           };
 
