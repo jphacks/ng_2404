@@ -11,6 +11,7 @@ import { addPost } from "@/firebase/posts";
 import router from "next/router";
 import { userAgent } from "next/server";
 import { auth } from "@/firebase/config";
+import NextLink from "next/link";
 
 const data = [
   "恋愛",
@@ -137,9 +138,8 @@ export default function Home() {
             <Button
               background={colors.gray[300]}
               colorScheme="gray"
-              onClick={() => {
-                // キャンセルボタンの処理
-              }}
+              as={NextLink}
+              href="/Posts"
             >
               キャンセル
             </Button>

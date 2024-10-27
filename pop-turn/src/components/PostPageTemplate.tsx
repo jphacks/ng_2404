@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CardComponent from "./card";
 import { Flex, Box } from "@chakra-ui/react";
-import { getAllPost, getPostsById, Post } from "@/firebase/posts";
+import { getAllPost, getPostsById,Post } from "@/firebase/posts";
 import { auth } from "@/firebase/config";
 import { User } from "firebase/auth";
+import router from "next/router";
 
 type PostPageTemplateProps = {
   type: "Posts" | "MyPosts" | "Favorites";
@@ -30,13 +31,25 @@ export const PostPageTemplate = (props: PostPageTemplateProps) => {
 
         switch (props.type) {
           case "Posts":
-            fetchedPosts = await getAllPost();
+            const queryTags = router.query.tags as string;
+              if (queryTags) {
+                const tagsArray = queryTags.split(",");
+                fetchedPosts = await getAllPost(tagsArray);
+              }else {
+                fetchedPosts = await getAllPost([]);
+              }
             console.log(fetchedPosts);
             break;
           case "MyPosts":
             if (user?.uid) {
               // getPostsByUserIdという関数を作成する必要があります
-              fetchedPosts = await getPostsById(user.uid);
+              const queryTags = router.query.tags as string;
+              if (queryTags) {
+                const tagsArray = queryTags.split(",");
+                fetchedPosts = await getPostsById(user.uid,tagsArray);
+              }else {
+                fetchedPosts = await getPostsById(user.uid,[]);
+              }
             }
             break;
           case "Favorites":
@@ -58,7 +71,7 @@ export const PostPageTemplate = (props: PostPageTemplateProps) => {
     if (props.type === "Posts" || user) {
       fetchPosts();
     }
-  }, [props.type, user]); // type または user が変更されたときに再実行
+  }, [props.type, router.query.tags, user]); // type または user が変更されたときに再実行
 
   if (isLoading) {
     return <div>Loading...</div>;
