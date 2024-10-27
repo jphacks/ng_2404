@@ -1,6 +1,9 @@
-import { Button, Container, Flex, Text } from "@chakra-ui/react";
-import React from "react";
+import { Button, Container, Divider, Flex, Tag, TagLeftIcon, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
+import { FaPlus } from "react-icons/fa6";
+import { LuMinus } from "react-icons/lu";
+import { useRouter } from "next/router";
 import { signOut } from "firebase/auth";
 import { signOutUser } from "@/firebase/auth";
 
@@ -9,28 +12,72 @@ type Props = {
 };
 
 export const Sidebar = (props: Props) => {
+  const [nonactiveTags, setNonactiveTags] = useState([
+    "恋愛",
+    "学業",
+    "友人",
+    "職場",
+    "不安",
+    "日常",
+    "将来",
+    "健康",
+    "家族",
+  ])
+  const [activeTags, setActiveTags] = useState([])
+  const router = useRouter();
   const { currentPage } = props;
 
+  useEffect(() => {
+    const queryTags = router.query.tags as string;
+    if (queryTags) {
+      const tagsArray = queryTags.split(",");
+      setActiveTags(tagsArray);
+      setNonactiveTags(nonactiveTags.filter(tag => !tagsArray.includes(tag)));
+    }
+  }, [router.query.tags]);
+
+  useEffect(() => {
+    const query = { ...router.query, tags: activeTags.join(",") };
+    router.push({ pathname: router.pathname, query }, undefined, { shallow: true });
+  }, [activeTags]);
+
+  const toggleTag = (tag: string, isActive: boolean) => {
+    if (isActive) {
+      setActiveTags(activeTags.filter(t => t !== tag));
+      setNonactiveTags([...nonactiveTags, tag]);
+    } else {
+      setNonactiveTags(nonactiveTags.filter(t => t !== tag));
+      setActiveTags([...activeTags, tag]);
+    }
+  };
+
   const renderButton = (href: string, label: string, isActive: boolean) => (
-    <Button
-      as={NextLink}
-      href={href}
-      w={"11rem"}
-      bgColor={isActive ? "orange.50" : "transparent"}
-      borderRadius={"0.4rem"}
-      cursor={"pointer"}
-      p={"1.5rem 0"}
-      textDecoration="none"
+    <NextLink
+      href={{
+        pathname: href,
+        query: { ...router.query, tags: activeTags.join(",") },
+      }}
+      passHref
     >
-      <Text
-        textAlign={"center"}
-        fontWeight={"bold"}
-        fontSize={35}
-        color={isActive ? "orange.500" : "black"}
+      <Button
+        as="a"
+        w={"11rem"}
+        bgColor={isActive ? "orange.50" : "transparent"}
+        borderRadius={"0.4rem"}
+        cursor={"pointer"}
+        p={"1.5rem 0"}
+        textDecoration="none"
       >
-        {label}
-      </Text>
-    </Button>
+        <Text
+          textAlign={"center"}
+          fontWeight={"bold"}
+          fontSize={35}
+          color={isActive ? "orange.500" : "black"}
+        >
+          {label}
+        </Text>
+      </Button>
+    </NextLink>
   );
 
   return (
@@ -62,13 +109,24 @@ export const Sidebar = (props: Props) => {
         p={0}
         display={"flex"}
       >
-        {/* 
-        <Flex flexDirection={"column"} w={"15vw"} gap={"0"} alignItems={"left"}>
+        <Flex flexDirection={"column"} w={"11rem"} gap={"0"} alignItems={"left"}>
           <Text fontSize={15}>タグで絞り込み</Text>
-          <Container w={"13vw"} h={"100%"} bgColor={"white"} borderRadius={"0.2rem"} m={0}>
+          <Container w={"11rem"} h={"100%"} bgColor={"white"} borderRadius={"0.2rem"} m={0} px={2} pt={2}>
+          {activeTags.map((tag) => (
+            <Tag key={tag} variant='solid' colorScheme='orange' m={1} cursor={"pointer"} onClick={() => toggleTag(tag, true)}>
+              <TagLeftIcon boxSize='12px' as={LuMinus} />
+              {tag}
+            </Tag>
+          ))}
+          <Divider m={"1rem 0"} h={"5px"} variant={"dashed"} colorScheme="black"/>
+          {nonactiveTags.map((tag) => (
+            <Tag key={tag} variant='solid' colorScheme='gray' m={1} cursor={"pointer"} onClick={() => toggleTag(tag, false)}>
+              <TagLeftIcon boxSize='12px' as={FaPlus} />
+              {tag}
+            </Tag>
+          ))}
           </Container>
         </Flex>
-        */}
       </Container>
 
       <Button

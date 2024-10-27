@@ -1,6 +1,5 @@
 import { Button, Text, Input, Flex } from "@chakra-ui/react";
 import { color } from "framer-motion";
-
 import React, { useState, useEffect } from "react";
 import { SiConvertio } from "react-icons/si";
 import { FaArrowAltCircleRight } from "react-icons/fa";
@@ -11,6 +10,7 @@ import { addPost } from "@/firebase/posts";
 import router from "next/router";
 import { userAgent } from "next/server";
 import { auth } from "@/firebase/config";
+import NextLink from "next/link";
 import withAuth from "@/firebase/withAuth";
 
 const data = [
@@ -138,9 +138,8 @@ function Home() {
             <Button
               background={colors.gray[300]}
               colorScheme="gray"
-              onClick={() => {
-                // キャンセルボタンの処理
-              }}
+              as={NextLink}
+              href="/Posts"
             >
               キャンセル
             </Button>

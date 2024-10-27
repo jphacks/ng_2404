@@ -10,6 +10,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "./config";
+import router from "next/router";
 
 type PostProps = {
   event: string;
@@ -59,11 +60,18 @@ export const addPost = async ({
   }
 };
 
-export const getAllPost = async () => {
+export const getAllPost = async (tags: string[]) => {
   try {
-    const postCollection = collection(db, "posts");
-    const postSnapshot = await getDocs(postCollection);
-    const posts = postSnapshot.docs.map((doc) => ({
+    const postsRef = collection(db, "posts");
+    let q;
+
+    if (tags.length > 0) {
+      q = query(postsRef, where("tags", "array-contains-any", tags));
+    } else {
+      q = query(postsRef);
+    }
+    const querySnapshot = await getDocs(q);
+    const posts = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       event: doc.data().event,
       converted: doc.data().converted,
@@ -79,10 +87,16 @@ export const getAllPost = async () => {
   }
 };
 // ユーザーの投稿を取得する関数
-export const getPostsById = async (userId: string): Promise<Post[]> => {
+export const getPostsById = async (userId: string,tags: string[]): Promise<Post[]> => {
   try {
     const postsRef = collection(db, "posts");
-    const q = query(postsRef, where("userId", "==", userId));
+    let q;
+
+    if (tags.length > 0) {
+      q = query(postsRef, where("userId", "==", userId), where("tags", "array-contains-any", tags));
+    } else {
+      q = query(postsRef, where("userId", "==", userId));
+    }
     const querySnapshot = await getDocs(q);
 
     const posts = querySnapshot.docs.map((doc) => ({
@@ -157,7 +171,7 @@ export const removeFav = async (postId: string, userId: string) => {
   }
 };
 
-export const getFavPosts = async (userId: string): Promise<Post[]> => {
+export const getFavPosts = async (userId: string,tags: string[]): Promise<Post[]> => {
   try {
     const userFavdataRef = doc(db, "usersFav", userId);
     const userFavSnap = await getDoc(userFavdataRef);
@@ -181,7 +195,7 @@ export const getFavPosts = async (userId: string): Promise<Post[]> => {
           }
         });
         const resolvedPosts = await Promise.all(posts);
-        return resolvedPosts.filter((post): post is Post => post !== undefined);
+        return resolvedPosts.filter((post): post is Post => post !== undefined).filter(post => post && tags.every(tag => post.tags.includes(tag)));
       }
     }
     return [];
