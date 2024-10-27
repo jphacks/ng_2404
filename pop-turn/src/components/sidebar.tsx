@@ -13,7 +13,7 @@ export const Sidebar = (props: Props) => {
     <Button
       as={NextLink}
       href={href}
-      w={"11vw"}
+      w={"11rem"}
       bgColor={isActive ? "orange.50" : "transparent"}
       borderRadius={"0.4rem"}
       cursor={"pointer"}
@@ -34,12 +34,12 @@ export const Sidebar = (props: Props) => {
   return (
     <Flex
       flexDirection={"column"}
-      w={"15vw"}
-      h={"100vh"}
+      w={"13rem"}
+      h={"100%"}
       bgColor={"orange.100"}
       alignItems={"center"}
       gap={"3"}
-      position={"sticky"}
+      position={"fixed"}
       top={0}
     >
       <Text fontSize={38} fontWeight={"bold"} m={"1rem 0"}>
@@ -54,7 +54,7 @@ export const Sidebar = (props: Props) => {
       )}
 
       <Container
-        w={"13vw"}
+        w={"11rem"}
         bgColor={"colors.orange.100"}
         flexGrow={1}
         p={0}
@@ -70,7 +70,7 @@ export const Sidebar = (props: Props) => {
       </Container>
 
       <Button
-        w={"11vw"}
+        w={"11rem"}
         bgColor={"orange.400"}
         borderRadius={"0.2rem"}
         cursor={"pointer"}
@@ -89,7 +89,7 @@ export const Sidebar = (props: Props) => {
         </Text>
       </Button>
       <Button
-        w={"11vw"}
+        w={"11rem"}
         cursor={"pointer"}
         mb={"0.5rem"}
         pt={"1rem"}
