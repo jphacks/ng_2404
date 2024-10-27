@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardComponent from "./card";
 import { Flex, Box } from "@chakra-ui/react";
-import { getAllPost, getPostsById,Post } from "@/firebase/posts";
+import { getAllPost, getFavPosts, getPostsById, Post } from "@/firebase/posts";
 import { auth } from "@/firebase/config";
 import { User } from "firebase/auth";
 import router from "next/router";
@@ -55,7 +55,7 @@ export const PostPageTemplate = (props: PostPageTemplateProps) => {
           case "Favorites":
             if (user?.uid) {
               // getFavoritePostsという関数を作成する必要があります
-              fetchedPosts = await getFavoritePosts(user.uid);
+              fetchedPosts = await getFavPosts(user.uid);
             }
             break;
         }
@@ -95,7 +95,9 @@ export const PostPageTemplate = (props: PostPageTemplateProps) => {
             tags={post.tags}
             date={post.date}
             isFavorited={false}
-            FavoritedNumber={0}
+            postId={post.id}
+            userId={post.userId}
+            FavoritedNumber={post.favoriteNumber}
           />
         </Box>
       ))}
@@ -104,8 +106,3 @@ export const PostPageTemplate = (props: PostPageTemplateProps) => {
 };
 
 // 必要な追加関数
-
-const getFavoritePosts = async (userId: string): Promise<Post[]> => {
-  // Firestoreからユーザーのお気に入り投稿を取得する実装
-  return [];
-};

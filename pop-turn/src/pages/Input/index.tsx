@@ -12,6 +12,7 @@ import router from "next/router";
 import { userAgent } from "next/server";
 import { auth } from "@/firebase/config";
 import NextLink from "next/link";
+import withAuth from "@/firebase/withAuth";
 
 const data = [
   "恋愛",
@@ -25,7 +26,7 @@ const data = [
   "家族",
 ].map((item) => ({ label: item, value: item }));
 
-export default function Home() {
+function Home() {
   const colors = require("tailwindcss/colors");
   const [event, setEvent] = useState("");
   const [converted, setConverted] =
@@ -160,3 +161,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default withAuth(Home);
