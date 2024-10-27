@@ -15,6 +15,11 @@ import { AiFillRobot } from "react-icons/ai";
 import { Inter } from "next/font/google";
 import { SlCalender } from "react-icons/sl";
 import { FaHeart } from "react-icons/fa";
+import { addFav, removeFav } from "@/firebase/posts";
+import { auth } from "@/firebase/config";
+import router from "next/router";
+import { set } from "firebase/database";
+import { SetStateAction, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +32,39 @@ type props = {
   FavoritedNumber: number; //いいねに登録されている数 他人の投稿をみるときは使わない
   // setisFavorited: React.Dispatch<React.SetStateAction<boolean>>; //いいねを押したときの挙動
 };
+const handleFavorite = async (
+  Favorited: boolean,
+  setFavorited: {
+    (value: SetStateAction<boolean>): void;
+    (arg0: boolean): void;
+  }
+) => {
+  if (auth.currentUser) {
+    if (Favorited) {
+      //いいねを取り消す
+      try {
+        await removeFav(auth.currentUser.uid);
+        setFavorited(false);
+        console.log("remove");
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      //いいねを登録する
+      try {
+        await addFav(auth.currentUser.uid);
+        setFavorited(true);
+        console.log("add");
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  } else {
+    //ログインしていない場合
+    alert("ログインしてください");
+    router.push("/");
+  }
+};
 
 export default function CardComponent(props: props) {
   const {
@@ -38,6 +76,8 @@ export default function CardComponent(props: props) {
     FavoritedNumber,
     // setisFavorited,
   } = props;
+
+  const [Favorited, setFavorited] = useState(isFavorited);
   return (
     <Flex flexDirection={"column"} alignItems={"center"} my={5}>
       <Card bgColor={"orange.50"} border={"1px solid black"} w={"30rem"}>
@@ -110,7 +150,7 @@ export default function CardComponent(props: props) {
                   fontFamily={inter.className}
                   textAlign={"center"}
                 >
-                  {/* {date} */}
+                  {date}
                 </Text>
                 <Flex gap={4}>
                   <Text
@@ -123,8 +163,8 @@ export default function CardComponent(props: props) {
                   </Text>
                   <Icon
                     fontSize={"24px"}
-                    color={isFavorited ? "pink.300" : "gray.500"}
-                    onClick={() => console.log("いいね")}
+                    color={Favorited ? "pink.300" : "gray.500"}
+                    onClick={() => handleFavorite(Favorited, setFavorited)}
                   >
                     <FaHeart />
                   </Icon>

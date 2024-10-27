@@ -39,7 +39,15 @@ export const addPost = async ({
       event: event,
       converted: converted,
       favoriteNumber: 0,
-      date: new Date().toDateString(),
+      date: new Date()
+        .toLocaleDateString("ja-JP", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })
+        .replace(/\//g, "年")
+        .replace(/年(\d{2})年/, "年$1月")
+        .replace(/月(\d{2})$/, "月$1日"),
       tags: tags,
       userId: userId,
     });
@@ -86,5 +94,33 @@ export const getPostsById = async (userId: string): Promise<Post[]> => {
   } catch (e) {
     console.error("Error getting user posts:", e);
     return [];
+  }
+};
+
+export const addFav = async (postId: string) => {
+  const postRef = doc(db, "posts", postId);
+  const postSnap = await getDoc(postRef);
+  if (postSnap.exists()) {
+    const post = postSnap.data();
+    if (post) {
+      await setDoc(postRef, {
+        ...post,
+        favoriteNumber: post.favoriteNumber + 1,
+      });
+    }
+  }
+};
+
+export const removeFav = async (postId: string) => {
+  const postRef = doc(db, "posts", postId);
+  const postSnap = await getDoc(postRef);
+  if (postSnap.exists()) {
+    const post = postSnap.data();
+    if (post) {
+      await setDoc(postRef, {
+        ...post,
+        favoriteNumber: post.favoriteNumber - 1,
+      });
+    }
   }
 };
