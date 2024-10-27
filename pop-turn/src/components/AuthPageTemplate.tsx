@@ -32,7 +32,12 @@ export const AuthPageTemplate = (props: AuthPageTemplateProps) => {
         );
         router.push("/Auth/Login");
       } else {
-        alert("登録に失敗しました。もう一度お試しください。");
+        console.error("ログイン失敗:", error);
+        alert(
+          `${
+            props.type === "login" ? "ログイン" : "登録"
+          }に失敗しました。もう一度お試しください。`
+        );
       }
     }
   };
@@ -67,7 +72,7 @@ export const AuthPageTemplate = (props: AuthPageTemplateProps) => {
             colorScheme="orange"
             type="submit"
           >
-            {props.type === "login" ? "ログイン" : "確認メールを送信"}
+            {props.type === "login" ? "ログイン" : "新規登録"}
           </Button>
         </div>
       </form>

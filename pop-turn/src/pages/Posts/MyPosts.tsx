@@ -1,7 +1,7 @@
 import { PostPageTemplate } from "@/components/PostPageTemplate";
 import { Sidebar } from "@/components/sidebar";
-
-export default function Home() {
+import withAuth from "@/firebase/withAuth";
+function Home() {
   return (
     <div className="h-screen bg-white flex items-center justify-content-space-between">
       <Sidebar currentPage="MyPosts" />
@@ -11,3 +11,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default withAuth(Home);
