@@ -63,13 +63,8 @@ export const addPost = async ({
 export const getAllPost = async (tags: string[]) => {
   try {
     const postsRef = collection(db, "posts");
-    let q;
+    const q = query(postsRef);
 
-    if (tags.length > 0) {
-      q = query(postsRef, where("tags", "array-contains-any", tags));
-    } else {
-      q = query(postsRef);
-    }
     const querySnapshot = await getDocs(q);
     const posts = querySnapshot.docs.map((doc) => ({
       id: doc.id,
@@ -80,7 +75,7 @@ export const getAllPost = async (tags: string[]) => {
       userId: doc.data().userId,
       favoriteNumber: doc.data().favoriteNumber,
     }));
-    return posts;
+    return posts.filter(post => post && tags.every(tag => post.tags.includes(tag)));;
   } catch (e) {
     console.error(e);
     return [];
@@ -90,13 +85,8 @@ export const getAllPost = async (tags: string[]) => {
 export const getPostsById = async (userId: string,tags: string[]): Promise<Post[]> => {
   try {
     const postsRef = collection(db, "posts");
-    let q;
+    const q = query(postsRef, where("userId", "==", userId));
 
-    if (tags.length > 0) {
-      q = query(postsRef, where("userId", "==", userId), where("tags", "array-contains-any", tags));
-    } else {
-      q = query(postsRef, where("userId", "==", userId));
-    }
     const querySnapshot = await getDocs(q);
 
     const posts = querySnapshot.docs.map((doc) => ({
@@ -109,7 +99,7 @@ export const getPostsById = async (userId: string,tags: string[]): Promise<Post[
       favoriteNumber: doc.data().favoriteNumber,
     }));
 
-    return posts;
+    return posts.filter(post => post && tags.every(tag => post.tags.includes(tag)));
   } catch (e) {
     console.error("Error getting user posts:", e);
     return [];
