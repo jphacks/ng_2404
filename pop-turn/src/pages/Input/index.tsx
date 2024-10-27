@@ -61,7 +61,10 @@ function Home() {
     try {
       // const result = await ChatGPTからデータを取得する関数(event)
       //仮の返答
-      setConverted(`「${event}」なんて気にするな！`);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const result =
+        "今日は少し寝坊しちゃって、学校で先生に注意をもらうことになったけれど、そのおかげで気づきがたくさんあったよ！いつも通りのリズムで過ごしていると気がつかないことも、こうやって少し違う一日を迎えると新鮮に感じるものだね。次回は時間に余裕をもって行動できるように、自分のペースを工夫して、もっとスムーズな一日のスタートを目指そうと思う。毎日のリズムが自分の成長に繋がるって感じた、そんな日になったよ！"; // 仮の返答
+      setConverted(result);
     } catch (e) {
       console.error(e);
     }
