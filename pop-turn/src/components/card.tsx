@@ -15,11 +15,11 @@ import { AiFillRobot } from "react-icons/ai";
 import { Inter } from "next/font/google";
 import { SlCalender } from "react-icons/sl";
 import { FaHeart } from "react-icons/fa";
-import { addFav, removeFav } from "@/firebase/posts";
+import { addFav, isUserFavThisPost, removeFav } from "@/firebase/posts";
 import { auth } from "@/firebase/config";
 import router from "next/router";
 import { set } from "firebase/database";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,19 +31,22 @@ type props = {
   isFavorited: boolean; //いいねに登録されているかどうか
   FavoritedNumber: number; //いいねに登録されている数 他人の投稿をみるときは使わない
   // setisFavorited: React.Dispatch<React.SetStateAction<boolean>>; //いいねを押したときの挙動
+  userId: string; //投稿者のID
+  postId: string; //投稿のID
 };
 const handleFavorite = async (
   Favorited: boolean,
   setFavorited: {
     (value: SetStateAction<boolean>): void;
     (arg0: boolean): void;
-  }
+  },
+  postId: string
 ) => {
   if (auth.currentUser) {
     if (Favorited) {
       //いいねを取り消す
       try {
-        await removeFav(auth.currentUser.uid);
+        await removeFav(postId, auth.currentUser.uid);
         setFavorited(false);
         console.log("remove");
       } catch (e) {
@@ -52,7 +55,7 @@ const handleFavorite = async (
     } else {
       //いいねを登録する
       try {
-        await addFav(auth.currentUser.uid);
+        await addFav(postId, auth.currentUser.uid);
         setFavorited(true);
         console.log("add");
       } catch (e) {
@@ -74,10 +77,20 @@ export default function CardComponent(props: props) {
     date,
     isFavorited,
     FavoritedNumber,
+    userId,
+    postId,
     // setisFavorited,
   } = props;
 
   const [Favorited, setFavorited] = useState(isFavorited);
+
+  useEffect(() => {
+    (async () => {
+      if (auth.currentUser)
+        setFavorited(await isUserFavThisPost(postId, auth.currentUser.uid));
+    })();
+  });
+
   return (
     <Flex flexDirection={"column"} alignItems={"center"} my={5}>
       <Card bgColor={"orange.50"} border={"1px solid black"} w={"30rem"}>
@@ -159,12 +172,14 @@ export default function CardComponent(props: props) {
                     fontFamily={inter.className}
                     textAlign={"center"}
                   >
-                    {FavoritedNumber}
+                    {auth.currentUser?.uid === userId && FavoritedNumber}
                   </Text>
                   <Icon
                     fontSize={"24px"}
                     color={Favorited ? "pink.300" : "gray.500"}
-                    onClick={() => handleFavorite(Favorited, setFavorited)}
+                    onClick={() =>
+                      handleFavorite(Favorited, setFavorited, postId)
+                    }
                   >
                     <FaHeart />
                   </Icon>
