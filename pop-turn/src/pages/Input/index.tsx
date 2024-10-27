@@ -12,6 +12,7 @@ import router from "next/router";
 import { userAgent } from "next/server";
 import { auth } from "@/firebase/config";
 import withAuth from "@/firebase/withAuth";
+import { convert } from "@/firebase/ai";
 
 const data = [
   "恋愛",
@@ -59,9 +60,9 @@ function Home() {
     console.log("event:", event);
 
     try {
-      // const result = await ChatGPTからデータを取得する関数(event)
+      const result = await convert(event);
       //仮の返答
-      setConverted(`「${event}」なんて気にするな！`);
+      setConverted(result.converted);
     } catch (e) {
       console.error(e);
     }
