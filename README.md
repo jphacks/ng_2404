@@ -23,19 +23,25 @@ AIのポップな表現変換により、ユーザーが自分の悩みを言葉
 ### 注力したこと（こだわり等）
 * 親しみやすいように柔らかいデザインにしました
 * どのようにしたらより良いaiの出力ができるかを考えた
+* タグ検索機能などを搭載し，多くの投稿を見やすくした
 
 ## 開発技術
 ### 活用した技術
 firebase
 chatgpt
 python
+typescript
+
 #### API・データ
 * firebase
 * chatgpt
 
 #### フレームワーク・ライブラリ・モジュール
-* 
-* 
+* chakra ui
+* tag picker
+* Next js
+* figma
+* react
 
 #### デバイス
 * web
