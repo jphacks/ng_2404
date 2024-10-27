@@ -42,7 +42,6 @@
           onAuthStateChanged(auth, (user) => {
             if (!user) {
               alert("ログインが必要です");
-              window.location.href = "index.html"; // ログインページにリダイレクト
             }
           });
 
@@ -62,6 +61,7 @@
               return;
             }
 
+            // Firebase Firestoreにメッセージを保存
             addDoc(collection(db, "messages"), {
               text: message,
               timestamp: new Date(),
@@ -72,6 +72,25 @@
               })
               .catch((error) => {
                 alert("エラー: " + error.message);
+              });
+
+            // Flaskサーバーにメッセージを送信
+            fetch("http://127.0.0.1:8000/process-message", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              mode: "cors", // 追加
+              body: JSON.stringify({ message: messageInput.value }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                const resultElement = document.getElementById("send-result");
+                resultElement.innerHTML =
+                  "サーバーからの応答: " + data.response;
+              })
+              .catch((error) => {
+                console.error("Flaskサーバーエラー:", error);
               });
           };
 

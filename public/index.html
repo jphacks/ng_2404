@@ -69,7 +69,7 @@
                 console.log("サインイン成功: " + userCredential.user.email);
                 document.getElementById("signin-result").textContent =
                   "サインイン成功: " + userCredential.user.email;
-                window.location.href = "./api/messages.html"; // メッセージページにリダイレクト
+                window.location.href = "./messages.html"; // メッセージページにリダイレクト
               })
               .catch((error) => {
                 console.error("サインインエラー:", error.message);

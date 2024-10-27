@@ -29,15 +29,5 @@ app.use(
   })
 );
 
-// ルートにアクセスがあった場合に index.html を提供する
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-});
-
-// 他のパスをリダイレクト
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-});
-
 // Firebase Functions でエクスポート
 exports.api = onRequest(app);
