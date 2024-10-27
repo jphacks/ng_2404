@@ -171,7 +171,7 @@ export const removeFav = async (postId: string, userId: string) => {
   }
 };
 
-export const getFavPosts = async (userId: string): Promise<Post[]> => {
+export const getFavPosts = async (userId: string,tags: string[]): Promise<Post[]> => {
   try {
     const userFavdataRef = doc(db, "usersFav", userId);
     const userFavSnap = await getDoc(userFavdataRef);
@@ -195,7 +195,7 @@ export const getFavPosts = async (userId: string): Promise<Post[]> => {
           }
         });
         const resolvedPosts = await Promise.all(posts);
-        return resolvedPosts.filter((post): post is Post => post !== undefined);
+        return resolvedPosts.filter((post): post is Post => post !== undefined).filter(post => post && tags.every(tag => post.tags.includes(tag)));
       }
     }
     return [];

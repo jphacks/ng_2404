@@ -54,8 +54,13 @@ export const PostPageTemplate = (props: PostPageTemplateProps) => {
             break;
           case "Favorites":
             if (user?.uid) {
-              // getFavoritePostsという関数を作成する必要があります
-              fetchedPosts = await getFavPosts(user.uid);
+              const queryTags = router.query.tags as string;
+              if (queryTags) {
+                const tagsArray = queryTags.split(",");
+                fetchedPosts = await getFavPosts(user.uid,tagsArray);
+              }else {
+                fetchedPosts = await getFavPosts(user.uid,[]);
+              }
             }
             break;
         }
