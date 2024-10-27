@@ -75,7 +75,7 @@ export const PostPageTemplate = (props: PostPageTemplateProps) => {
       alignItems="flex-start"
     >
       {posts.map((post) => (
-        <Box key={post.id} width="48%" mb="4">
+        <Box key={post.id} width="30rem" m={0} p={0}>
           <CardComponent
             event={post.event}
             converted={post.converted}
